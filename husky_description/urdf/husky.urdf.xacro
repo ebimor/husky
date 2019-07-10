@@ -29,6 +29,10 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <xacro:arg name="laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  0.38 0.0 -0.2)" />
   <xacro:arg name="laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" />
 
+  <xacro:arg name="rear_laser_enabled" default="false" />
+  <xacro:arg name="rear_laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  -0.58 0.0 -0.2)" />
+  <xacro:arg name="rear_laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 3.1415)" />
+
   <xacro:arg name="kinect_enabled" default="false" />
   <xacro:arg name="kinect_xyz" default="$(optenv HUSKY_KINECT_XYZ 0 0 0)" />
   <xacro:arg name="kinect_rpy" default="$(optenv HUSKY_KINECT_RPY 0 0.18 3.14)" />
@@ -160,6 +164,20 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
   </xacro:if>
 
+  <xacro:if value="$(arg laser_enabled)">
+
+    <sick_lms1xx_mount prefix="rear_base"/>
+
+    <sick_lms1xx frame="rear_base_laser" topic="scan_rear" robot_namespace="$(arg robot_namespace)"/>
+
+    <joint name="rear_laser_mount_joint" type="fixed">
+      <origin xyz="$(arg rear_laser_xyz)" rpy="$(arg rear_laser_rpy)" />
+      <parent link="top_plate_link" />
+      <child link="rear_base_laser_mount" />
+    </joint>
+
+  </xacro:if>
+
   <xacro:if value="$(arg kinect_enabled)">
 
     <xacro:sensor_arch prefix="" parent="top_plate_link">
@@ -177,6 +195,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
 
