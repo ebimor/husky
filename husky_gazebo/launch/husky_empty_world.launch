@@ -50,7 +50,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <node name="spawn_dock" pkg="gazebo_ros" type="spawn_model"
         args="-param dock_description
               -urdf
-              -x 10 -y -5 -z 0 -R 0 -P 0 -Y 3.1417
+              -x 10 -y -5.0 -z 0 -R 0 -P 0 -Y 3.1415
               -model dock"
         respawn="false" output="screen" />
 

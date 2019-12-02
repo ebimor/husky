@@ -123,16 +123,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <gazebo reference="imu_link">
   </gazebo>
 
-    <!-- GPS Link is the standard mounting position-->
-  <!-- Can be modified with environment variables in /etc/ros/setup.bash -->
-  <link name="gps_link"/>
-  <joint name="gps_joint" type="fixed">
-    <origin xyz="$(optenv HUSKY_GPS_XYZ 0.19 0 0.149)" rpy="$(optenv HUSKY_GPS_RPY 0 -1.5708 3.1416)" />
-    <parent link="base_link" />
-    <child link="gps_link" />
-  </joint>
-  <gazebo reference="gps_link">
-  </gazebo>
 
   <!-- Husky wheel macros -->
   <xacro:husky_wheel wheel_prefix="front_left">
@@ -219,12 +209,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
       <robotNamespace>$(arg robot_namespace)</robotNamespace>
       <updateRate>40</updateRate>
       <bodyName>base_link</bodyName>
-      <frameId>gps_link</frameId>
+      <frameId>base_link</frameId>
       <topicName>navsat/fix</topicName>
       <velocityTopicName>navsat/vel</velocityTopicName>
       <referenceLatitude>43.50076203</referenceLatitude>
       <referenceLongitude>-80.54629721</referenceLongitude>
-      <referenceHeading>0</referenceHeading>
+      <referenceHeading>90.0</referenceHeading>
       <referenceAltitude>0</referenceAltitude>
       <drift>0.0001 0.0001 0.0001</drift>
     </plugin>
