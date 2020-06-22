@@ -4,7 +4,7 @@
   <arg name="multimaster" default="$(optenv ROBOT_MULTIMASTER false)"/>
   <arg name="simulation" default="$(optenv ROBOT_SIMULATION false)"/>
   <arg name="robot_namespace" default="$(optenv ROBOT_NAMESPACE robot)"/>
-  <arg name="simulate_delay" default="$(optenv SIMULATE_DELAY false)"/>
+  <arg name="controller_delay" default="$(optenv CONTROLLER_DELAY_ENABLE false)"/>
   <arg name="limit_turn_radius" default="$(optenv LIMIT_TURN_RADIUS false)"/>
 
   <arg name="config_extras"
@@ -53,8 +53,8 @@
     <rosparam command="load" file="$(find husky_control)/config/twist_mux.yaml" unless="$(arg limit_turn_radius)"/>
 
     <!-- topic remapping depending on simulation delay -->
-    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel_no_delay" if="$(arg simulate_delay)"/>
-    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel" unless="$(arg simulate_delay)"/>
+    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel_no_delay" if="$(arg controller_delay)"/>
+    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel" unless="$(arg controller_delay)"/>
   </node>
 
   <!-- Override the default control parameters, see config/empty.yaml for default. -->
