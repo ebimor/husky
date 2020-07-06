@@ -49,12 +49,12 @@
 
   <node pkg="twist_mux" type="twist_mux" name="twist_mux">
     <!-- topic naming in config file depending on turning radius node enabled/disabled -->
-    <rosparam command="load" file="$(find husky_control)/config/twist_mux_limited.yaml" if="$(arg limit_turn_radius)"/>
-    <rosparam command="load" file="$(find husky_control)/config/twist_mux.yaml" unless="$(arg limit_turn_radius)"/>
+    <rosparam command="load" file="$(find husky_control)/config/twist_mux_delay.yaml"     if="$(eval arg('limit_turn_radius') and arg('controller_delay'))"/>
+    <rosparam command="load" file="$(find husky_control)/config/twist_mux_limited.yaml"   if="$(eval arg('limit_turn_radius') and not arg('controller_delay'))"/>
+    <rosparam command="load" file="$(find husky_control)/config/twist_mux_delay.yaml"     if="$(eval not arg('limit_turn_radius') and arg('controller_delay'))"/>
+    <rosparam command="load" file="$(find husky_control)/config/twist_mux.yaml"           if="$(eval not arg('limit_turn_radius') and not arg('controller_delay'))"/>
 
-    <!-- topic remapping depending on simulation delay -->
-    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel_no_delay" if="$(arg controller_delay)"/>
-    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel" unless="$(arg controller_delay)"/>
+    <remap from="cmd_vel_out" to="husky_velocity_controller/cmd_vel"/>
   </node>
 
   <!-- Override the default control parameters, see config/empty.yaml for default. -->
