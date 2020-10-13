@@ -25,7 +25,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 -->
 <launch>
 
-  <arg name="world_name" default="$(find husky_gazebo)/worlds/indoor_outdoor.world"/>    <!-- "worlds/empty.world" -->
+  <arg name="world_name" default="worlds/empty.world"/>    <!-- "$(find husky_gazebo)/worlds/indoor_outdoor.world" -->
 
   <arg name="laser_enabled" default="true"/>
   <arg name="kinect_enabled" default="false"/>
@@ -43,15 +43,5 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <arg name="laser_enabled" value="$(arg laser_enabled)"/>
     <arg name="kinect_enabled" value="$(arg kinect_enabled)"/>
   </include>
-
-  <param name="dock_description" command="$(find xacro)/xacro.py '$(find jackal_gazebo)/worlds/dock/dock.urdf.xacro'" />
-
-      <!-- Spawn dock -->
-  <node name="spawn_dock" pkg="gazebo_ros" type="spawn_model"
-        args="-param dock_description
-              -urdf
-              -x 20.0 -y -8.0 -z 0 -R 0 -P 0 -Y 3.1415
-              -model dock"
-        respawn="false" output="screen" />
 
 </launch>

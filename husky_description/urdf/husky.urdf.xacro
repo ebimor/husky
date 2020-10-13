@@ -26,13 +26,18 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 <robot name="husky" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:arg name="laser_enabled" default="false" />
+  <xacro:arg name="laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  0.2206 0.0 0.00635)" />
+  <xacro:arg name="laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" />
+-->
+<!--
+  <xacro:arg name="laser_enabled" default="false" />
   <xacro:arg name="laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  0.38 0.0 -0.2)" />
   <xacro:arg name="laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" />
 
   <xacro:arg name="rear_laser_enabled" default="false" />
   <xacro:arg name="rear_laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  -0.58 0.0 -0.2)" />
   <xacro:arg name="rear_laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 3.1415)" />
-
+-->
   <xacro:arg name="kinect_enabled" default="false" />
   <xacro:arg name="kinect_xyz" default="$(optenv HUSKY_KINECT_XYZ 0 0 0)" />
   <xacro:arg name="kinect_rpy" default="$(optenv HUSKY_KINECT_RPY 0 0.18 3.14)" />
@@ -153,7 +158,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     </joint>
 
   </xacro:if>
-
+<!--
   <xacro:if value="$(arg laser_enabled)">
 
     <sick_lms1xx_mount prefix="rear_base"/>
@@ -167,7 +172,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     </joint>
 
   </xacro:if>
-
+-->
   <xacro:if value="$(arg kinect_enabled)">
 
     <xacro:sensor_arch prefix="" parent="top_plate_link">
