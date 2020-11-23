@@ -10,13 +10,13 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://husky_gazebo/meshes/wibotic/cpr_charge_dock.stl" />
+        <mesh filename="package://husky_gazebo/meshes/cpr_dock_target.stl" />
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://husky_gazebo/meshes/wibotic/cpr_charge_dock.stl" />
+        <mesh filename="package://husky_gazebo/meshes/cpr_dock_target.stl" />
       </geometry>
       <max_contacts>10</max_contacts>
       <surface>
