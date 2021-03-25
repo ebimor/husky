@@ -45,13 +45,31 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   </include>
 
   <param name="dock_description" command="$(find xacro)/xacro.py '$(find husky_gazebo)/worlds/dock/dock.urdf.xacro'" />
+  <param name="house_description" command="$(find xacro)/xacro.py '$(find husky_gazebo)/worlds/house/house.urdf.xacro'" />
+  <param name="charger_description" command="$(find xacro)/xacro.py '$(find husky_gazebo)/worlds/charger/charger.urdf.xacro'" />
+
+    <!-- Spawn house -->
+  <node name="spawn_house" pkg="gazebo_ros" type="spawn_model"
+      args="-param house_description
+            -urdf
+            -x 7.0 -y 2.0 -z 0.0 -R 0 -P 0 -Y 0
+            -model house"
+      respawn="false" output="screen" />
 
     <!-- Spawn dock -->
   <node name="spawn_dock" pkg="gazebo_ros" type="spawn_model"
       args="-param dock_description
             -urdf
-            -x 20.0 -y -8.0 -z 0 -R 0 -P 0 -Y 3.1415
+            -x 6.99 -y 2.0 -z 0.0 -R 0 -P 0 -Y 0
             -model dock"
+      respawn="false" output="screen" />
+
+    <!-- Spawn charger -->
+  <node name="spawn_charger" pkg="gazebo_ros" type="spawn_model"
+      args="-param charger_description
+            -urdf
+            -x 6.57 -y 2.0 -z 0.0 -R 1.5708 -P 0.0 -Y -1.5708
+            -model charger"
       respawn="false" output="screen" />
 
 </launch>

@@ -10,13 +10,13 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://husky_gazebo/meshes/cpr_dock_target.stl" />
+        <mesh filename="package://husky_gazebo/meshes/Dock_X5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://husky_gazebo/meshes/cpr_dock_target.stl" />
+        <mesh filename="package://husky_gazebo/meshes/Dock_X5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <max_contacts>10</max_contacts>
       <surface>
@@ -34,7 +34,7 @@
     </collision>
   </link>
   <gazebo reference="base_link">
-    <material>Gazebo/DarkGray</material>
+    <material>Gazebo/Yellow</material>
   </gazebo>
   <gazebo> <static>true</static></gazebo>
 </robot>

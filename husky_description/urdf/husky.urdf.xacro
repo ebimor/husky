@@ -28,12 +28,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <xacro:arg name="laser_enabled" default="false" />
   <xacro:arg name="laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  0.2206 0.0 0.00635)" />
   <xacro:arg name="laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" />
--->
-<!--
-  <xacro:arg name="laser_enabled" default="false" />
-  <xacro:arg name="laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  0.38 0.0 -0.2)" />
-  <xacro:arg name="laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" />
 
+
+<!--   <xacro:arg name="laser_enabled" default="false" />
+  <xacro:arg name="laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  0.38 0.0 -0.25)" />
+  <xacro:arg name="laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" /> -->
+<!--
   <xacro:arg name="rear_laser_enabled" default="false" />
   <xacro:arg name="rear_laser_xyz" default="$(optenv HUSKY_LMS1XX_XYZ  -0.58 0.0 -0.2)" />
   <xacro:arg name="rear_laser_rpy" default="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 3.1415)" />
