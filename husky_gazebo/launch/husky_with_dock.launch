@@ -44,15 +44,14 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <arg name="realsense_enabled" value="$(arg realsense_enabled)"/>
   </include>
 
-  <!--param name="dock_description" command="$(find xacro)/xacro.py '$(find husky_gazebo)/worlds/dock/dock.urdf.xacro'" /-->
+  <param name="dock_description" command="$(find xacro)/xacro.py '$(find husky_gazebo)/worlds/dock/dock.urdf.xacro'" />
 
-  <!-- Spawn dock -->
-<!--node name="spawn_dock" pkg="gazebo_ros" type="spawn_model"
-    args="-param dock_description
-          -urdf
-          -x 20.0 -y -8.0 -z 0 -R 0 -P 0 -Y 3.1415
-          -model dock"
-    respawn="false" output="screen" /-->
-
+    <!-- Spawn dock -->
+  <node name="spawn_dock" pkg="gazebo_ros" type="spawn_model"
+      args="-param dock_description
+            -urdf
+            -x 20.0 -y -8.0 -z 0 -R 0 -P 0 -Y 3.1415
+            -model dock"
+      respawn="false" output="screen" />
 
 </launch>
